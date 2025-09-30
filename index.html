@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>2025日專祭</title>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="JS/storeopeningcard.js" defer></script>
+
+    <script src="JS/buildingTabs.js" defer></script>
   </head>
 
   <body>
@@ -23,14 +24,12 @@
           </li>
         </ul>
       </nav>
-      <!-- ハンバーガメニュー スマホonly -->
       <div class="menu_icon phone-only">
         <div class="menu_icon-line linea"></div>
         <div class="menu_icon-line lineb"></div>
         <div class="menu_icon-line linec"></div>
       </div>
     </header>
-    <!-- <img class="background_image" src="img/KV.png" alt="2025日專祭キービジュアル" /> -->
     <main>
       <div class="kv">
         <div class="kv-content">
@@ -42,28 +41,30 @@
         </div>
       </div>
 
-      <div class="card">
-        <h2 class="label">日時</h2>
-        <div class="section-datetime">
-          <div class="dates-container">
-            <img src="img/time.png" alt="開催日時" />
+      <section id="schedule">
+        <div class="card">
+          <h2 class="label">日時</h2>
+          <div class="section-datetime">
+            <div class="dates-container">
+              <img src="img/time.png" alt="開催日時" />
+            </div>
+          </div>
+          <h2 class="label">会場</h2>
+          <div class="location-details">
+            <p class="main-location">日本電子専門学校</p>
+            <p class="buildings">本館・４号館・５号館・７号館・９号館</p>
+          </div>
+          <div class="location-details">
+            <p class="note">本校学生以外の来場者の方は、</p>
+            <p class="note">
+              <strong>本館・４号館・７号館</strong
+              >が受付となっておりますので<br />お越しください。
+            </p>
           </div>
         </div>
-        <h2 class="label">会場</h2>
-        <div class="location-details">
-          <p class="main-location">日本電子専門学校</p>
-          <p class="buildings">本館・４号館・５号館・７号館・９号館</p>
-        </div>
-        <div class="location-details">
-          <p class="note">本校学生以外の来場者の方は、</p>
-          <p class="note">
-            <strong>本館・４号館・７号館</strong
-            >が受付となっておりますので<br />お越しください。
-          </p>
-        </div>
-      </div>
-      <!-- <img class="kyatchi" src="img/キャッチフレーズ１.png" alt="キャッチフレーズ"> -->
-      <section class="held">
+      </section>
+
+      <section class="held" id="greeting">
         <img class="h2_title" src="img/kaisai.png" alt="開催にあたって" />
         <div class="section_held">
           <a href="Greetings/index.html" class="button_container"
@@ -79,27 +80,572 @@
           >
         </div>
       </section>
-      <section class="ExhibitionsandStores">
+
+      <section class="ExhibitionsandStores" id="exhibitions">
         <img class="h2_title" src="img/syuten.png" alt="展示・出店" />
         <div class="section_ExhibitionsandStores">
-          <div class="Exhibitions_container">
-            <img
-              class="Exhibitions_img"
-              src="img/ディスプレイ枠.png"
-              alt="地図"
-            />
-            <ul class="Exhibitions_button">
-              <li><button>本館</button></li>
-              <li><button>4号館</button></li>
-              <li><button>5号館</button></li>
-              <li><button>7号館</button></li>
-              <li><button>9号館</button></li>
-            </ul>
+          <div class="building-tabs">
+            <button class="building-tab active" data-building="honkan">
+              本館
+            </button>
+            <button class="building-tab" data-building="building4">
+              4号館
+            </button>
+            <button class="building-tab" data-building="building5">
+              5号館
+            </button>
+            <button class="building-tab" data-building="building7">
+              7号館
+            </button>
+            <button class="building-tab" data-building="building9">
+              9号館
+            </button>
           </div>
-          <div class="Stores_container"></div>
+
+          <div class="building-content">
+            <div class="building-panel active" id="honkan">
+              <div class="content-grid">
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/1_CC.png"
+                    alt="ネットワークセキュリティ科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">5階152教室</span>
+                    </div>
+                    <h4 class="exhibition-title">ネットワークセキュティ科</h4>
+                    <p class="exhibition-description">
+                      みんなのパスワードは大丈夫？？
+                      今使っているパスワードの強度を調べてみませんか？？
+                      ネットワークセキュリティ科の学科展示会場でお待ちしています(#^.^#)。
+                    </p>
+                  </div>
+                </div>
+
+                <div class="exhibition-card">
+                  <img src="img/gakka/1_JK.png" alt="DXスペシャリスト科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">6階162教室</span>
+                    </div>
+                    <h4 class="exhibition-title">DXスペシャリスト科</h4>
+                    <p class="exhibition-description">
+                      在校生主体で、DXについての解説や学習内容の展示、制作物展示を行っています。ぜひ、遊びに来てください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/1_CA.png" alt="AIシステム科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">8階181&182教室</span>
+                    </div>
+                    <h4 class="exhibition-title">AIシステム科</h4>
+                    <p class="exhibition-description">
+                      AIシステムを展示しています！卒業生の作品も展示しているのでお越しください（＾－＾♪
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/1_kuriCandle.png" alt="kuriCandle.png" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">7階171教室</span>
+                    </div>
+                    <h4 class="exhibition-title">Kuri Candle</h4>
+                    <p class="exhibition-description">
+                      手作りキャンドルの体験を行っています。
+                      大人から子供まで誰でも、カラフルな色、いろいろな形のキャンドルを簡単に作れます。
+                      Kuri Candleオリジナルキャンドル販売も行っています。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/1_CG.png" alt="CGアクション制作研究会" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">B1階1B12教室</span>
+                    </div>
+                    <h4 class="exhibition-title">CGアクション制作研究会</h4>
+                    <p class="exhibition-description">
+                      当研究会は６月に新設したばかりの気鋭の同好会！１年生を中心に、初めてのチーム制作に挑みました！サイバーパンク×カンフーの、新しさと懐かしさの混在する不思議な世界をご堪能下さい！愿原力与你同在!!
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/1_Babiniku.png"
+                    alt="笹田先生はパ美肉がしたい！"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">号館</span>
+                      <span class="badge">何階何教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      笹田先生はバ美肉がしたい！PART3～キラキラPOP！な魔法世界にご招待～
+                    </h4>
+                    <p class="exhibition-description">
+                      今年3回目のバ美肉！モーションキャプチャ技術のライブ、かわいいCGキャラになれる体験、カフェスペースのプロジェクションマッピング演出、などなど盛りだくさん！日専祭の思い出作りにぜひお立ち寄りください☆
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/1_electronic.png" alt="電子アイコン部" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">5階153教室</span>
+                    </div>
+                    <h4 class="exhibition-title">電子マイコン部</h4>
+                    <p class="exhibition-description">
+                      電子マイコン部です！
+                      遊びとIOT技術、組込みシステムを探求し、ゲームセンターにあるような大型筐体を部員同士、協力して作りました。是非、遊んでみて下さい！
+                    </p>
+                  </div>
+                </div>
+
+                <div class="exhibition-card">
+                  <img src="img/dantai/1_Reiwaday.png" alt="今日は命中日和" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">本館</span>
+                      <span class="badge">7階172教室</span>
+                    </div>
+                    <h4 class="exhibition-title">今日は命中日和</h4>
+                    <p class="exhibition-description">
+                      的に恋して、命中日和！放った一投が偶然か、運命か。笑顔咲かすこのひととき。狙うのは的か、それとも君のハートか。是非お試しあれ！
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="building-panel" id="building4">
+              <div class="content-grid">
+                <div class="exhibition-card">
+                  <img src="img/gakka/4_CI.png" alt="ゲーム制作科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">4号館</span>
+                      <span class="badge">2階442&3階432教室</span>
+                    </div>
+                    <h4 class="exhibition-title">ゲーム制作科</h4>
+                    <p class="exhibition-description">
+                      今年も４号館の２階と３階の実習室にて学生作品の展示を行います。作品選考会もありますので、お気に入りの作品に投票してください。皆さんのお越しをお待ちしております！！
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="building-panel" id="building5">
+              <div class="content-grid">
+                <div class="exhibition-card">
+                  <img src="img/gakka/5_AV.png" alt="CG映像制作科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">号館</span>
+                      <span class="badge">何階何教室</span>
+                    </div>
+                    <h4 class="exhibition-title">CG映像制作科</h4>
+                    <p class="exhibition-description">
+                      5号館1階スタジオにて、1・2年生が手がけたCG・VFX作品を巨大スクリーンで上映中！不思議でワクワクする映像体験をぜひご覧ください。
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="building-panel" id="building7">
+              <div class="content-grid">
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/7_AU.png"
+                    alt="コンピュータグラフィックス研究科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">B1階7B11&7B12教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      コンピュータグラフィックス研究科
+                    </h4>
+                    <p class="exhibition-description">
+                      CG業界でニーズが高まるテクニカルディレクター、テクニカルアーティスト、Houdiniスペシャリストを育成する学科です。学生作品や研究パネルの展示のほか、CGツールも体験できます。みなさまの来場をお待ちしています！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/7_EO.png" alt="電子応用工学科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">1階712教室</span>
+                    </div>
+                    <h4 class="exhibition-title">電子応用工学科</h4>
+                    <p class="exhibition-description">
+                      電子回路＆組込みソフトなどの『モノづくり』を学ぶ学科です。大会出場したマイクロマウス、家電を再現した製作物の展示、ラズベリーパイによる『オモシロIoT体験』やセンサー回路製作の体験コーナーもあります。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/7_CR.png" alt="ゲーム企画科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">3階731教室</span>
+                    </div>
+                    <h4 class="exhibition-title">ゲーム企画科</h4>
+                    <p class="exhibition-description">
+                      ゲーム企画科では学生作品の展示の他、「遊びのイベント」も企画・運営し、新しい表現を模索しております。731実習室（7号館3階1番教室）にて是非ご覧ください！！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/7_JN_JZ_JY.png"
+                    alt="情報処理科・高度情報処理科・情報システム開発科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">3階732教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      情報処理科・高度情報処理科・情報システム開発科
+                    </h4>
+                    <p class="exhibition-description">
+                      気に入った画像をチョイスして、オリジナルプラバンを作ろう！
+                      タッチタイピングソフト「たっちくん」で山手線駅名を入力する速さを競います。
+                      タイピングに自信のある人、タイピング初心者も是非ご参加ください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/7_CU.png" alt="ゲーム制作研究科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">4階741教室</span>
+                    </div>
+                    <h4 class="exhibition-title">ゲーム制作研究科</h4>
+                    <p class="exhibition-description">
+                      ゲーム制作研究科の学生が制作したゲーム試遊が出来ます！是非7号館４階へご来場ください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/7_AC_AR.png"
+                    alt="アニメーション科・アニメーション研究科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">5階751教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      アニメーション科・アニメーション研究科
+                    </h4>
+                    <p class="exhibition-description">
+                      「アニメーション科・アニメーション研究科による制作物の展示と、
+                      最新液晶タブレットによるアニメーションソフトの体験ブースを設置しております。
+                      イラストのコンテストも開催しておりますので、ぜひお立ち寄りください！」
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/7_AG.png" alt="グラフィックデザイン科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">6階761&762教室</span>
+                    </div>
+                    <h4 class="exhibition-title">グラフィックデザイン科</h4>
+                    <p class="exhibition-description">
+                      グラフィックデザイン科2025年度前期学習成果発表展。「触れる」をテーマに、日常の課題を体感的に伝える作品を中心に、前期授業にて学生が取り組んだ作品を展示します。是非作品に直接触れて体感してください。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/gakka/7_AW.png" alt="Webデザイン科" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">7階771教室</span>
+                    </div>
+                    <h4 class="exhibition-title">Webデザイン科</h4>
+                    <p class="exhibition-description">
+                      『学生の作品、ちょっとのぞいてみませんか？』
+                      Webデザイン科では、学生たちが授業で取り組んできた
+                      WebサイトやWebページ、バナー広告、ランディングページ
+                      などの作品を展示しています。
+                      デザインの工夫や制作の裏側について、学生本人が直接ご紹介します。
+                      「どんな勉強をしているの？」「どんなスキルが身につくの？」といった疑問にも答えますので、ぜひ気軽にお立ち寄りください。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/7_KJ_KK.png"
+                    alt="電気工学科・電気工事技術科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">7階773教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      電気工学科・電気工事技術科
+                    </h4>
+                    <p class="exhibition-description">
+                      電気科のブースでは、太陽光発電などエネルギーを生み出す技術や、電気配線の仕組みを体験できる展示が盛り沢山です。また実習で作ったＬＡＮケーブルは、実際にご自宅で使うことができます、ぜひ体験してください。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/7_Hotpage.png"
+                    alt="Webデザイン科Hotpageチーム"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">4階743教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      Webデザイン科Hotpageチーム
+                    </h4>
+                    <p class="exhibition-description">
+                      Webデザイン科Hotpageチームです！普段は学科の今をお届けするブログ活動をしています！スリッパ卓球、ぜひ楽しんでいってください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/7_Seminar.png"
+                    alt="Webデザイン科セミナーチーム"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">6階763教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      Webデザイン科セミナーチーム
+                    </h4>
+                    <p class="exhibition-description">
+                      ミサンガの色には意味があるって知ってましたか？想いを込めてミサンガを作ってみましょう！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/7_graphic.png"
+                    alt="Webデザイン科グラフィックチーム"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">7階772教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      Webデザイン科グラフィックチーム
+                    </h4>
+                    <p class="exhibition-description">
+                      夏の指先に、きらめきを！✨
+                      透明感あふれるレジンの中に、小さなお花やキラキラを閉じ込めた、手作りのオリジナルリングです🌺
+                      お祭り気分をさらに盛り上げる、あなただけの特別な一点を見つけませんか？
+                      ぜひ、お手に取ってご覧ください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/7_Kyudo.png" alt="弓道部" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">5階753教室</span>
+                    </div>
+                    <h4 class="exhibition-title">弓道部</h4>
+                    <p class="exhibition-description">
+                      香ばしくてふわふわ！文化祭限定の手作りポップコーンで、みんなに笑顔をお届けします！ぜひご賞味あれ！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/7_CM.png"
+                    alt="モバイルアプリケーション開発科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">8階781教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      モバイルアプリケーション開発科
+                    </h4>
+                    <p class="exhibition-description">
+                      学生が作ったアプリを展示しています。触って、体験して、楽しんで、モバイルアプリケーション開発科の魅力を存分に味わってください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/7_analog.png" alt="アナログゲーム体験会" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">7号館</span>
+                      <span class="badge">4階742教室</span>
+                    </div>
+                    <h4 class="exhibition-title">アナログゲーム体験会</h4>
+                    <p class="exhibition-description">
+                      UNOやトランプ、人狼ゲームなど20種類以上のアナログゲームが遊べます！さらに先着順で「初心者歓迎！90分でできるTRPG体験会」も同時開催します。手厚い説明で安心して遊べますのでぜひお越しください！
+                    </p>
+                  </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="building-panel" id="building9">
+              <div class="content-grid">
+                <div class="exhibition-card">
+                  <img
+                    src="img/gakka/9_AD.png"
+                    alt="コンピュータグラフィックス科"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge"> 9号館</span>
+                      <span class="badge">3階931&932教室</span>
+                    </div>
+                    <h4 class="exhibition-title">
+                      コンピュータグラフィックス科
+                    </h4>
+                    <p class="exhibition-description">
+                      ◆学生作品展・・・・・日々の頑張りここに集結！
+                      ◆レトロゲーム展・・・今年も押入れから出るか！昭和の実機
+                      ◆交流コーナー・・・・まったりゆったりCGのこと語りませんか？
+                      ほか 932で受付ののち、932,931で展示と交流をお楽しみください
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/9_Nichiden_Rock_Fes.png"
+                    alt="Nichiden_Rock_Fes"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge"> 9号館</span>
+                      <span class="badge">メディアホール</span>
+                    </div>
+                    <h4 class="exhibition-title">Nichiden Rock Fes</h4>
+                    <p class="exhibition-description">
+                      日専祭で開催！音楽部によるロックフェス！一緒にメディアホールで楽しみませんか？部員一同お待ちしております！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/9_ironplate.png" alt="鉄板スイーツ工房" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭6</span>
+                    </div>
+                    <h4 class="exhibition-title">鉄板スイーツ工房</h4>
+                    <p class="exhibition-description">
+                      鉄板で焼いたホクホクなチュロスとスイートポテト
+                      是非食べに来てください！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img
+                    src="img/dantai/9_Friednoodles.png"
+                    alt="焼き麺二郎"
+                  />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭1</span>
+                    </div>
+                    <h4 class="exhibition-title">焼き麺二郎</h4>
+                    <p class="exhibition-description">
+                      焼き麺二郎とはただの焼きそばではありません。いつも通りの焼きそばに刻みニンニクを混ぜ、一緒に炒めたものです。焼きそばソースの濃い匂いとニンニクの香ばしい香りが最高！ご来店お待ちしております。
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/9_Nagachan.png" alt="永ちゃん" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭5</span>
+                    </div>
+                    <h4 class="exhibition-title">永ちゃん</h4>
+                    <p class="exhibition-description">
+                      おいしいたこ焼きあります！ ガーリックマヨ味あります！
+                      タコせんあります！ あなたが来るのを待ってます！
+                      たこ焼き食べたきゃ『永ちゃん🔥』へ
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/9_dokamori.png" alt="ドカモリ" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭4</span>
+                    </div>
+                    <h4 class="exhibition-title">ドカモリ</h4>
+                    <p class="exhibition-description">
+                      ドカドカモリモリのハンバーガーとアニメ科で作ったステッカーがあります！！ぜひ来てください！！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/9_momotaro.png" alt="桃太郎印" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭3</span>
+                    </div>
+                    <h4 class="exhibition-title">桃太郎印</h4>
+                    <p class="exhibition-description">
+                      肉を食らうならうちでしょ！！！！
+                    </p>
+                  </div>
+                </div>
+                <div class="exhibition-card">
+                  <img src="img/dantai/9_mogomogo.png" alt="モゴモゴ" />
+                  <div class="exhibition-info">
+                    <div class="location-badges">
+                      <span class="badge">9号館</span>
+                      <span class="badge">中庭2</span>
+                    </div>
+                    <h4 class="exhibition-title">モゴモゴ</h4>
+                    <p class="exhibition-description">
+                      韓国の人気ストリートフード「ソトックソトック」が日専祭に登場！ソーセージとトッ
+                      ポッキ餅を交互に刺して焼き、甘辛ソースで仕上げた絶品串料理です。チーズ入りもご用意しています！ぜひご賞味ください！
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-      <section class="SNS">
+
+      <section class="SNS" id="sns">
         <img class="h2_title" src="img/kousiki.png" alt="公式SNS" />
         <div class="section_SNS">
           <img class="insuta" src="img/insta.png" alt="インスタグラム" />
@@ -122,6 +668,7 @@
           </div>
         </div>
       </section>
+
       <section class="guest_section_area" id="guest">
         <h2 class="guest_section_title">
           <img src="img/gesto.png" alt="ゲストトークショー" />
@@ -135,8 +682,7 @@
           <div class="guest_details">
             <div class="guest_info_container">
               <p class="guest_info_text guest_info_text--right">
-                開催日時： 11月2日&nbsp;&nbsp;12:00開場
-                <br />13:00開演 <br />14:00終演
+                開催日時： 11月2日&nbsp;&nbsp;12:00開場 <br />13:00開演 <br />14:00終演
               </p>
               <p class="guest_info_text">開催場所： 9号館メディアホール</p>
               <ul class="guest_info_list">
@@ -176,7 +722,8 @@
           </div>
         </div>
       </section>
-      <section class="executivecommittee">
+
+      <section class="executivecommittee" id="committee-project">
         <img class="h2_title" src="img/zikoin.png" alt="実行委員会企画" />
         <div class="section_executivecommittee">
           <div class="text">スタンプ＆ワード集め</div>
@@ -212,13 +759,13 @@
           </div>
         </div>
       </section>
-      <div class="section__precautions-content">
+
+      <section class="section__precautions-content" id="precautions">
         <img class="h2_title" src="img/tyui.png" alt="注意事項" />
         <div class="section__precautions-container">
           <div class="section__precautions-attention">
             <p class="section__precautions-heading">
-              皆様に快適にお過ごしいただくために、
-              <br />いくつかお願いがございます。
+              皆様に快適にお過ごしいただくために、 <br />いくつかお願いがございます。
               <br />ご協力のほどお願い申し上げます。
             </p>
           </div>
@@ -267,7 +814,7 @@
             </ul>
           </div>
         </div>
-      </div>
+      </section>
     </main>
     <footer>
       <div class="footer-container">
@@ -277,21 +824,19 @@
             >日本電子専門学校公式ページ</a
           >
           <div class="social-links">
-            <a href="" class="social-link">
+            <a href="https://www.youtube.com/@nichiden1951/videos" class="social-link">
               <img
                 src="img/youtube_logo.svg"
                 alt="YouTube"
                 class="social-icon"
-                alt="YouTube_Logo"
               />
               <p>公式 Youtube</p>
             </a>
-            <a href="#" class="social-link">
+            <a href="https://www.instagram.com/nichiden1951?igsh=MWJibGllcG1qbzl6eQ==" class="social-link">
               <img
                 src="img/Instagram_logo.svg"
                 alt="Instagram"
                 class="social-icon"
-                alt="Instagram_Logo"
               />
               <p>公式 Instagram</p>
             </a>
@@ -299,14 +844,13 @@
         </div>
         <div class="footer-menu">
           <ul>
-            <li><a href="#">開催日程</a></li>
-            <li><a href="#">開催にあたって</a></li>
-            <li><a href="#">キャッチフレーズ</a></li>
-            <li><a href="#">公式SNS</a></li>
-            <li><a href="#">展示・出店</a></li>
-            <li><a href="#">ゲストトークショー</a></li>
-            <li><a href="#">実行委員会企画</a></li>
-            <li><a href="#">注意事項</a></li>
+            <li><a href="#schedule">開催日程</a></li>
+            <li><a href="#greeting">開催にあたって</a></li>
+            <li><a href="#exhibitions">展示・出店</a></li>
+            <li><a href="#sns">公式SNS</a></li>
+            <li><a href="#guest">ゲストトークショー</a></li>
+            <li><a href="#committee-project">実行委員会企画</a></li>
+            <li><a href="#precautions">注意事項</a></li>
           </ul>
         </div>
         <div class="footer-info">
@@ -320,5 +864,6 @@
         <p>© Japan Electronics College. All Rights Reserved.</p>
       </div>
     </footer>
+    <script src="JS/smoothScroll.js" defer></script>
   </body>
 </html>
