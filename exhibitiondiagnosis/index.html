@@ -5,9 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おすすめの展示診断</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
+    <header>
+        <a href="index.html">
+            <img class="header-logo" src="../img/logo.png" alt="2025日專祭ロゴ" /></a>
+        <nav class="pc-nav">
+            <ul>
+                <li class="pc-nav-active"><a href="index.html">TOP</a></li>
+                <li class="pc-nav-li1"><a href="exhibitiondiagnosis/index.html">おすすめ展示診断</a></li>
+                <li class="pc-nav-li"><a href="Greetings/index.html">ご挨拶</a></li>
+                <li class="pc-nav-li1">
+                    <a href="Creatorintroduction/index.html">制作者紹介</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- ハンバーガメニュー スマホonly -->
+        <div class="menu_icon phone-only">
+            <div class="menu_icon-line linea"></div>
+            <div class="menu_icon-line lineb"></div>
+            <div class="menu_icon-line linec"></div>
+        </div>
+    </header>
+    <div class="chart-container">
+        <h1>タスク優先度チャート</h1>
+        <h2 id="question">スタートボタンを押して開始します</h2>
+        <div id="buttons" class="button-group">
+            <button id="start-button">チャートをスタート</button>
+        </div>
+        <p id="result" class="hidden"></p>
+    </div>
 
 </body>
 
