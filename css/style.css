@@ -815,7 +815,7 @@ strong {
   line-height: 150%;
 }
 
-/* ゲストトークショー */
+/* Vtuberトークショー */
 .guest_section_area {
   display: grid;
   margin: 200px 100px;
@@ -1411,8 +1411,13 @@ p.greeting_comment3 {
   font-style: normal;
   font-weight: 700;
   line-height: 175%;
+  margin-top: 10px;
+  margin-bottom: 50px;
 }
 
+#buttons {
+  margin-bottom: 200px;
+}
 
 #start-button {
   display: flex;
@@ -1434,11 +1439,167 @@ p.greeting_comment3 {
 }
 
 #choice-buttons {
-  display: none;
+  display: flex;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 26px;
+}
+
+#yes-button {
+  display: flex;
+  width: 530px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #DD6541;
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+#no-button {
+  display: flex;
+  width: 530px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #4484BE;
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
 }
 
 #restart-button {
-  display: none;
+  display: flex;
+  width: 1070px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #EF832A;
+  border: none;
+  color: #FFF;
+  text-align: center;
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 150%;
+}
+
+.detail {
+  color: #B15237;
+  text-align: center;
+  font-family: "Noto Sans JP";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 175%;
+  /* 56px */
+}
+
+.quiz-number {
+  display: inline-block;
+  font-size: 1.5em;
+  /* 大きめのフォントサイズ */
+  font-weight: bold;
+  color: #cc0000;
+  /* 目立つ色（例: 赤） */
+  margin-bottom: 25px;
+}
+
+/* アコーディオンコンテナの基本設定 */
+#accordion-container {
+  width: 80%;
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: sans-serif;
+  /* デフォルトの色を定義。JavaScriptで上書きされます。 */
+  --main-color: #3498db;
+  /* 青系統 */
+}
+
+/* アコーディオンのヘッダー部分 */
+.accordion-header {
+  background-color: var(--main-color);
+  /* メインカラーを使用 */
+  color: white;
+  padding: 15px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  border-radius: 5px 5px 0 0;
+  transition: background-color 0.3s;
+}
+
+/* アコーディオンの中身のコンテンツ */
+.accordion-content {
+  padding: 0 18px;
+  background-color: #f7f7f7;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+}
+
+/* 開いている状態のコンテンツ */
+.accordion-content.active {
+  max-height: 500px;
+  /* 任意の最大値 */
+  padding: 15px 18px;
+}
+
+/* ヘッダーのホバーエフェクト（少し暗く） */
+.accordion-header:hover {
+  filter: brightness(0.9);
+}
+
+/* ショップカード内の要素 */
+.shop-card {
+  padding: 10px 0;
+}
+
+.shop-card h4 {
+  color: var(--main-color);
+  /* メインカラーを使用 */
+  margin-top: 0;
+}
+
+/* アイコン（+ / -）のスタイル */
+.accordion-icon {
+  font-size: 20px;
+  line-height: 1;
+  transition: transform 0.3s;
+}
+
+/* アイコンを回転させて「-」のように見せる */
+.accordion-header.active .accordion-icon {
+  transform: rotate(45deg);
+  /* +を45度回転させてXのようにする（-でも可）*/
 }
 
 @media screen and (max-width: 600px) {

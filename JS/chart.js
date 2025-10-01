@@ -1,177 +1,212 @@
-const diagnosis = {
-    "q1": {
-        question: "Q1: あなたは「デジタルなもの」（AI、プログラミング）に興味がありますか？",
-        yes: "q2",
-        no: "q3",
-        result: false
-    },
-    "q2": {
-        question: "Q2: 最新のAIやデータ解析の仕組みに触れてみたいですか？",
-        yes: "info_science", // 情報科学科
-        no: "q4",
-        result: false
-    },
-    "q3": {
-        question: "Q3: 物理的なモノや建物のデザインに興味がありますか？",
-        yes: "q5",
-        no: "chemistry", // 化学科 (物理・デジタル以外)
-        result: false
-    },
-    "q4": {
-        question: "Q4: Webサービス、アプリ開発、ゲーム制作に強い関心がありますか？",
-        yes: "info_science", // 情報科学科
-        no: "chemistry",
-        result: false
-    },
-    "q5": {
-        question: "Q5: ロボット、乗り物、機械の「仕組み」を学ぶことに興味がありますか？",
-        yes: "mechanical", // 機械工学科
-        no: "architecture", // 建築学科
-        result: false
-    },
+document.addEventListener('DOMContentLoaded', () => {
+    // ===========================================
+    // 診断データ
+    // ===========================================
+    const quizData = {
+        '1': { q_num: 'Q1', question: '未来のあなたはパソコンよりも<br>ペンや紙の方が似合う？', yes: '2', no: '5' },
+        '2': { q_num: 'Q2', question: 'その作品は自分で操作できた方が楽しい？', yes: '1a', no: '3' },
+        '3': { q_num: 'Q3', question: 'その表現<br>時間の流れで見せたい？', yes: '4', no: '2a' },
+        '4': { q_num: 'Q4', question: '2次元に行けるなら<br>行きたい？', yes: '3a', no: '4a' },
+        '5': { q_num: 'Q5', question: 'それは見えない世界を<br>守る仕事？', yes: '5a', no: '6' },
+        '6': { q_num: 'Q6', question: 'あなたの武器は<br>ハンダゴテ？', yes: '6a', no: '7' },
+        '7': { q_num: 'Q7', question: 'それは人間の頭脳を<br>マネするもの？', yes: '7a', no: '8' },
+        '8': { q_num: 'Q8', question: 'それはネットやアプリで<br>人とつながる？', yes: '8a', no: '9a' },
+        // 結果ノード
+        '1a': { result: 'あなたにおすすめの分野は...<br>', detail: 'ゲーム', department: 'ゲーム' }, // ★修正: departmentを追加
+        '2a': { result: 'あなたにおすすめの分野は...<br>', detail: 'デザイン', department: 'デザイン' }, // ★修正: departmentを追加
+        '3a': { result: 'あなたにおすすめの分野は...<br>', detail: 'アニメ', department: 'アニメ' }, // ★修正: departmentを追加
+        '4a': { result: 'あなたにおすすめの分野は...<br>', detail: 'CG・映像', department: 'CG・映像' }, // ★修正: departmentを追加
+        '5a': { result: 'あなたにおすすめの分野は...<br>', detail: 'ネットワーク・<br>セキュリティー', department: 'ネットワーク・セキュリティー' }, // ★修正: departmentを追加
+        '6a': { result: 'あなたにおすすめの分野は...<br>', detail: '電気・電子', department: '電気・電子' }, // ★修正: departmentを追加
+        '7a': { result: 'あなたにおすすめの分野は...<br>', detail: 'AI', department: 'AI' }, // ★修正: departmentを追加
+        '8a': { result: 'あなたにおすすめの分野は...<br>', detail: 'Web・モバイル', department: 'Web・モバイル' }, // ★修正: departmentを追加
+        '9a': { result: 'あなたにおすすめの分野は...<br>', detail: '情報処理', department: '情報処理' }, // ★修正: departmentを追加
+    };
 
-    // --- 結果 (Result) ---
-    "info_science": {
-        question: "情報科学科",
-        description: "プログラミング、AI、データサイエンス、Web技術など、デジタル社会を支える技術に触れられます。未来のIT分野に関心があるあなたにおすすめです！",
-        icon: "💻",
-        color: "text-indigo-700",
-        bg_color: "bg-indigo-100",
-        result: true // 明示的な結果フラグ
-    },
-    "mechanical": {
-        question: "機械工学科",
-        description: "ロボット、自動車、航空機、エネルギーシステムなど、「モノづくり」の基礎と応用を学べます。物理的な構造や動きの仕組みに興味があるあなたにおすすめです！",
-        icon: "⚙️",
-        color: "text-red-700",
-        bg_color: "bg-red-100",
-        result: true // 明示的な結果フラグ
-    },
-    "chemistry": {
-        question: "化学科",
-        description: "物質の性質や変化を追求し、新しい材料やエネルギーを生み出す研究を行えます。ミクロな世界の不思議や実験に興味があるあなたにおすすめです！",
-        icon: "🧪",
-        color: "text-green-700",
-        bg_color: "bg-green-100",
-        result: true // 明示的な結果フラグ
-    },
-    "architecture": {
-        question: "建築学科",
-        description: "快適で美しい空間、安全な建物の設計、都市計画などを学びます。デザインと構造の両方に興味があるあなたにおすすめです！",
-        icon: "🏗️",
-        color: "text-yellow-700",
-        bg_color: "bg-yellow-100",
-        result: true // 明示的な結果フラグ
-    }
-};
+    // ===========================================
+    // 学科ごとのデータと色（アコーディオン用）
+    // ※ quizDataのdepartment名とキーを合わせること
+    // ===========================================
+    const departmentData = {
+        'ゲーム': {
+            color: '#DD6541', // 赤
+            shopName: '最新作ゲームの試遊コーナー',
+            location: '2号館3階 特設会場',
+            description: '学生が制作した未公開ゲームを自由に体験できます！開発者本人に話を聞くチャンス！'
+        },
+        'デザイン': {
+            color: '#E7AC50', // 紫
+            shopName: 'デジタルアート＆プロダクト展示会',
+            location: '5号館1階 デザインギャラリー',
+            description: 'Web、ポスター、プロダクトなど、幅広い分野の洗練されたデザイン作品を展示しています。'
+        },
+        'アニメ': {
+            color: '#AAC862', // 黄色
+            shopName: 'アニメ制作工程と原画展',
+            location: '6号館2階 アニメーションラボ',
+            description: '絵コンテから動画までの制作過程を公開。学生の描いた貴重な原画も見られます！'
+        },
+        'CG・映像': {
+            color: '#E3D643', // 青
+            shopName: 'VR/AR 映像体験ブース',
+            location: '4号館4階 映像スタジオ',
+            description: '最新のVR技術を用いた3DCG映像を体験！没入感のある世界に入り込もう。'
+        },
+        'ネットワーク・セキュリティー': {
+            color: '#20ABA9', // エメラルドグリーン
+            shopName: 'ハッキング・防御デモ体験',
+            location: '1号館2階 ネットワーク演習室',
+            description: 'ホワイトハッカーが教えるセキュリティーの重要性。防御の仕組みをデモで解説します。'
+        },
+        '電気・電子': {
+            color: '#2DA869', // グレー
+            shopName: '自作ロボット大集合！動体展示',
+            location: '3号館1階 ロボティクスホール',
+            description: '学生が設計・開発した様々なセンサー、モーター搭載のロボットの動きを間近で見よう。'
+        },
+        'AI': {
+            color: '#4484BE', // 緑
+            shopName: '対話型AI & 機械学習デモ',
+            location: '1号館3階 B教室',
+            description: '自然言語処理AIや、画像認識の学習プロセスを分かりやすくデモンストレーションします。'
+        },
+        'Web・モバイル': {
+            color: '#A55A99', // オレンジ
+            shopName: 'オリジナルアプリ・Webサービス体験',
+            location: '8号館1階 Web制作室',
+            description: '学生が企画・開発した実用的なモバイルアプリやユニークなWebサイトを触って試せます。'
+        },
+        '情報処理': {
+            color: '#1AADDF', // 薄いグレー
+            shopName: 'ビジネス向けシステム開発展',
+            location: '4号館1階 プログラミング教室',
+            description: '企業向けのデータベース構築や業務改善システムなど、実務に役立つIT技術を紹介します。'
+        }
+    };
 
-let currentStep = "q1"; // 現在の質問IDを保持
-const questionElement = document.getElementById('question');
-const startButton = document.getElementById('start-button');
-const choiceButtons = document.getElementById('choice-buttons');
-const yesButton = document.getElementById('yes-button');
-const noButton = document.getElementById('no-button');
-const restartButton = document.getElementById('restart-button');
-const chartBox = document.querySelector('.chart-box');
+    // 必要なHTML要素を取得
+    const startButton = document.getElementById('start-button');
+    const questionBox = document.getElementById('question');
+    const choiceButtons = document.getElementById('choice-buttons');
+    const buttonsContainer = document.getElementById('buttons');
+    const yesButton = document.getElementById('yes-button');
+    const noButton = document.getElementById('no-button');
+    const restartButton = document.getElementById('restart-button');
 
+    // アコーディオン要素の取得
+    const accordionContainer = document.getElementById('accordion-container');
+    const accordionHeader = document.querySelector('.accordion-header');
+    const accordionContent = document.querySelector('.accordion-content');
 
-/**
- * 診断を開始し、最初の質問を表示する
- */
-function startGame() {
-    currentStep = "q1";
+    // 診断の現在の状態を保持する変数
+    let currentQuizId = '1';
 
-    // 質問表示エリアのスタイルをリセット
-    questionElement.className = "text-3xl font-bold flex flex-col justify-center items-center mb-10 text-gray-800 transition duration-300";
-    questionElement.innerHTML = diagnosis[currentStep].question;
+    // 最初に質問とYes/Noボタン、リスタートボタン、アコーディオンを非表示に設定
+    questionBox.style.display = 'block';
+    choiceButtons.style.display = 'none';
+    restartButton.style.display = 'none';
+    accordionContainer.style.display = 'none'; // アコーディオンは最初は非表示
 
-    // ボタンの表示/非表示を切り替える (スタートを隠し、YES/NOを表示)
-    startButton.parentElement.classList.add('hidden'); // スタートボタンのコンテナを隠す
-    choiceButtons.classList.remove('hidden');
-    choiceButtons.classList.add('flex');
-    restartButton.classList.add('hidden');
+    // ===========================================
+    // アコーディオンの更新関数
+    // ===========================================
+    const updateAccordion = (departmentName) => {
+        const data = departmentData[departmentName] || departmentData['その他'];
 
-    // 結果表示用のスタイルをリセット
-    chartBox.classList.remove('shadow-2xl', 'border-4', 'border-opacity-50');
-    chartBox.style.borderTopColor = '#4f46e5'; // ボーダー色をリセット
-}
+        // 1. 色の変更: CSSカスタムプロパティを更新
+        accordionContainer.style.setProperty('--main-color', data.color);
 
-/**
- * ユーザーの選択（YES/NO）を処理し、次のステップに進む
- * @param {boolean} isYes - trueならYESの選択
- */
-function handleChoice(isYes) {
+        // 2. 内容の変更
+        // chart.js:120:58 (このあたり)
+        document.getElementById('shop-name').textContent = `出店名: ${data.shopName}`;
+        document.getElementById('shop-location').textContent = `場所: ${data.location}`;
+        document.getElementById('shop-description').textContent = `紹介: ${data.description}`;
 
-    // **修正: 現在のステップが質問ステップであることを確認し、結果オブジェクトへのアクセスを防ぐ**
-    // 質問ステップには必ず 'yes' と 'no' のプロパティがあるため、これで判定する。
-    if (!diagnosis[currentStep] || !diagnosis[currentStep].yes) {
-        // 既に結果に到達している、または無効なステップIDの場合、処理を停止
-        return;
-    }
+        // 3. アコーディオンを表示
+        accordionContainer.style.display = 'block';
+    };
 
-    const nextId = isYes ? diagnosis[currentStep].yes : diagnosis[currentStep].no;
-    currentStep = nextId;
+    // ===========================================
+    // 質問・結果表示のメイン関数
+    // ===========================================
+    const showNext = (id) => {
+        const item = quizData[id];
 
-    if (diagnosis[currentStep].result) {
-        displayResult();
-    } else {
-        // 次の質問を表示
-        // アニメーションのために一時的に不透明度を変更
-        questionElement.style.opacity = 0;
-        setTimeout(() => {
-            questionElement.innerHTML = diagnosis[currentStep].question;
-            questionElement.style.opacity = 1;
-        }, 150);
-    }
-}
+        if (!item) {
+            console.error('無効なIDが指定されました:', id);
+            return;
+        }
 
-/**
- * 診断結果を表示する
- */
-function displayResult() {
-    const resultData = diagnosis[currentStep];
+        currentQuizId = id;
 
-    // 質問表示エリアに結果コンテンツを挿入
-    questionElement.innerHTML = `
-        <div class="${resultData.bg_color} p-4 rounded-xl w-full">
-            <span class="text-xl font-medium block mb-2 text-gray-600 transition duration-300">🎉 あなたにおすすめの展示は...</span>
-            <strong class="text-5xl block font-extrabold ${resultData.color} mt-2 mb-4">
-                ${resultData.icon} ${resultData.question}
-            </strong>
-        </div>
-        <p class="mt-6 text-gray-700 text-lg px-2 leading-relaxed">${resultData.description}</p>
-        <div class="mt-6 text-sm text-gray-500 pt-3">
-            ぜひ、この展示を探して足を運んでみましょう！
-        </div>
-    `;
+        // 結果 (IDに 'a' が含まれる場合)
+        if (id.includes('a')) {
+            // 結果文をセット
+            questionBox.innerHTML = item.result + `<span class="result-department">${item.detail}</span>`;
 
-    // 結果に応じたスタイルの変更
-    chartBox.classList.add('shadow-2xl', 'border-4', 'border-opacity-50');
-    // 'text-indigo-700' -> 'border-indigo-700' に置換
-    chartBox.style.borderTopColor = resultData.color.replace('text', 'border');
+            // Yes/Noボタンを非表示、リスタートボタンを表示
+            choiceButtons.style.display = 'none';
+            restartButton.style.display = 'block';
 
-    // ボタンの表示/非表示を切り替える
-    choiceButtons.classList.add('hidden');
-    restartButton.classList.remove('hidden');
-}
+            // ★重要: アコーディオンを更新・表示する
+            updateAccordion(item.department);
+        }
+        // 質問
+        else {
+            // 質問番号と質問文をセット
+            const questionNumber = item.q_num ? `<span class="quiz-number">${item.q_num}</span><br>` : '';
+            questionBox.innerHTML = questionNumber + item.question;
 
+            // Yes/Noボタンを表示、リスタートボタンとアコーディオンを非表示
+            choiceButtons.style.display = 'flex';
+            restartButton.style.display = 'none';
+            accordionContainer.style.display = 'none'; // 質問中は非表示に戻す
+        }
+    };
 
-// --- イベントリスナーの設定 ---
+    // ===========================================
+    // イベントリスナー
+    // ===========================================
 
-// スタートボタン
-startButton.addEventListener('click', startGame);
+    // 1. 「スタート！！」ボタンのイベント
+    startButton.addEventListener('click', () => {
+        buttonsContainer.style.display = 'none';
+        questionBox.style.display = 'block';
+        showNext(currentQuizId);
+    });
 
-// YES/NOボタン
-yesButton.addEventListener('click', () => handleChoice(true));
-noButton.addEventListener('click', () => handleChoice(false));
+    // 2. 「はい (YES)」ボタンのイベント
+    yesButton.addEventListener('click', () => {
+        const currentItem = quizData[currentQuizId];
+        if (currentItem && currentItem.yes) {
+            showNext(currentItem.yes);
+        }
+    });
 
-// リスタートボタン
-restartButton.addEventListener('click', () => {
-    // 初期画面の状態に戻す
-    questionElement.innerHTML = 'Yes/No診断で<br>見に行く学科展示を決めよう！';
-    startButton.parentElement.classList.remove('hidden');
-    choiceButtons.classList.add('hidden');
-    restartButton.classList.add('hidden');
-    chartBox.classList.remove('shadow-2xl', 'border-4', 'border-opacity-50');
-    chartBox.style.borderTopColor = '#4f46e5'; // ボーダー色をリセット
+    // 3. 「いいえ (NO)」ボタンのイベント
+    noButton.addEventListener('click', () => {
+        const currentItem = quizData[currentQuizId];
+        if (currentItem && currentItem.no) {
+            showNext(currentItem.no);
+        }
+    });
+
+    // 4. 「最初からやり直す」ボタンのイベント
+    restartButton.addEventListener('click', () => {
+        // 状態を初期化
+        currentQuizId = '1';
+        restartButton.style.display = 'none';
+        choiceButtons.style.display = 'none';
+        accordionContainer.style.display = 'none'; // アコーディオンを非表示に戻す
+
+        // 初期画面に戻す
+        questionBox.innerHTML = 'Yes/No診断で<br>見に行く学科展示を決めよう！';
+        buttonsContainer.style.display = 'block';
+    });
+
+    // 5. アコーディオンの開閉機能
+    accordionHeader.addEventListener('click', () => {
+        accordionHeader.classList.toggle('active');
+        accordionContent.classList.toggle('active');
+    });
 });

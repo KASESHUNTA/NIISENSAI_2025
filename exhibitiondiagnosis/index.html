@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>おすすめの展示診断</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../JS/chart.js" defer></script>
 </head>
 
 <body>
@@ -32,30 +33,44 @@
         <h1 class="creator_title">
             <img src="../img/exhibitiondiagnosis.png" alt="ご挨拶" />
         </h1>
-        <div class="chart-box">
-            <div class="chart-container">
-                <h2 id="question">Yes/No診断で<br>見に行く学科展示を決めよう！</h2>
-            </div>
-            <div id="buttons" class="button-group">
-                <button id="start-button">スタート！！</button>
-            </div>
-            <div id="choice-buttons">
-                <button id="yes-button">
-                    はい (YES)
+        <div>
+            <div class="chart-box">
+                <div class="chart-container">
+                    <h2 id="question">Yes/No診断で<br>見に行く学科展示を決めよう！</h2>
+                </div>
+                <div id="buttons" class="button-group">
+                    <button id="start-button">スタート！！</button>
+                </div>
+                <div id="choice-buttons">
+                    <button id="yes-button">
+                        YES
+                    </button>
+                    <button id="no-button">
+                        NO
+                    </button>
+                </div>
+                <div id="accordion-container" style="display: none; margin-top: 20px;">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span class="header-text">分野のあなたは この展示がおすすめ！</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="shop-card">
+                                <h4 id="shop-name">出店名: [診断結果の分野]の展示</h4>
+                                <p id="shop-location">場所: 7号館2階</p>
+                                <p id="shop-description">紹介: こちらの展示では、[診断結果の分野]に関するユニークな作品やデモ体験ができます！</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="restart-button">
+                    もう一度
                 </button>
-                <button id="no-button">
-                    いいえ (NO)
-                </button>
             </div>
-
-            <!-- リスタートボタン (結果表示後に表示) -->
-            <button id="restart-button">
-                最初からやり直す
-            </button>
-        </div>
 
     </main>
-    <footer>
+    <!-- <footer>
         <div class="footer-container">
             <div class="footer-logo">
                 <img src="../img/logo_23.11.26.png" alt="ロゴ" />
@@ -77,7 +92,7 @@
                     <li><a href="../index.html#greeting">開催にあたって</a></li>
                     <li><a href="../index.html#exhibitions">展示・出店</a></li>
                     <li><a href="../index.html#sns">公式SNS</a></li>
-                    <li><a href="../index.html#guest">ゲストトークショー</a></li>
+                    <li><a href="../index.html#guest">Vtuberトークショー</a></li>
                     <li><a href="../index.html#committee-project">実行委員会企画</a></li>
                     <li><a href="../index.html#precautions">注意事項</a></li>
                 </ul>
@@ -92,7 +107,7 @@
         <div class="footer-copyright">
             <p>© Japan Electronics College. All Rights Reserved.</p>
         </div>
-    </footer>
+    </footer> -->
 </body>
 
 </html>
