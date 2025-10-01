@@ -14,11 +14,10 @@
             <img class="header-logo" src="../img/logo.png" alt="2025日專祭ロゴ" /></a>
         <nav class="pc-nav">
             <ul>
-                <li class="pc-nav-active"><a href="index.html">TOP</a></li>
-                <li class="pc-nav-li1"><a href="exhibitiondiagnosis/index.html">おすすめ展示診断</a></li>
-                <li class="pc-nav-li"><a href="Greetings/index.html">ご挨拶</a></li>
-                <li class="pc-nav-li1">
-                    <a href="Creatorintroduction/index.html">制作者紹介</a>
+                <li class="pc-nav-active"><a href="../index.html">TOP</a></li>
+                <li class="pc-nav-li1"><a href="../exhibitiondiagnosis/index.html">おすすめ展示診断</a></li>
+                <li class="pc-nav-li"><a href="../Greetings/index.html">ご挨拶</a></li>
+                <li class="pc-nav-li1"><a href="../Creatorintroduction/index.html">制作者紹介</a>
                 </li>
             </ul>
         </nav>
@@ -29,15 +28,71 @@
             <div class="menu_icon-line linec"></div>
         </div>
     </header>
-    <div class="chart-container">
-        <h1>タスク優先度チャート</h1>
-        <h2 id="question">スタートボタンを押して開始します</h2>
-        <div id="buttons" class="button-group">
-            <button id="start-button">チャートをスタート</button>
-        </div>
-        <p id="result" class="hidden"></p>
-    </div>
+    <main>
+        <h1 class="creator_title">
+            <img src="../img/exhibitiondiagnosis.png" alt="ご挨拶" />
+        </h1>
+        <div class="chart-box">
+            <div class="chart-container">
+                <h2 id="question">Yes/No診断で<br>見に行く学科展示を決めよう！</h2>
+            </div>
+            <div id="buttons" class="button-group">
+                <button id="start-button">スタート！！</button>
+            </div>
+            <div id="choice-buttons">
+                <button id="yes-button">
+                    はい (YES)
+                </button>
+                <button id="no-button">
+                    いいえ (NO)
+                </button>
+            </div>
 
+            <!-- リスタートボタン (結果表示後に表示) -->
+            <button id="restart-button">
+                最初からやり直す
+            </button>
+        </div>
+
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo">
+                <img src="../img/logo_23.11.26.png" alt="ロゴ" />
+                <a href="https://www.jec.ac.jp/" class="official-link">日本電子専門学校公式ページ</a>
+                <div class="social-links">
+                    <a href="https://www.youtube.com/@nichiden1951/videos" class="social-link">
+                        <img src="../img/youtube_logo.svg" alt="YouTube" class="social-icon" />
+                        <p>公式 Youtube</p>
+                    </a>
+                    <a href="https://www.instagram.com/nichiden1951?igsh=MWJibGllcG1qbzl6eQ==" class="social-link">
+                        <img src="../img/Instagram_logo.svg" alt="Instagram" class="social-icon" />
+                        <p>公式 Instagram</p>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-menu">
+                <ul>
+                    <li><a href="../index.html#schedule">開催日程</a></li>
+                    <li><a href="../index.html#greeting">開催にあたって</a></li>
+                    <li><a href="../index.html#exhibitions">展示・出店</a></li>
+                    <li><a href="../index.html#sns">公式SNS</a></li>
+                    <li><a href="../index.html#guest">ゲストトークショー</a></li>
+                    <li><a href="../index.html#committee-project">実行委員会企画</a></li>
+                    <li><a href="../index.html#precautions">注意事項</a></li>
+                </ul>
+            </div>
+            <div class="footer-info">
+                <ul>
+                    <li><a href="Creatorintroduction/index.html">-ご挨拶-</a></li>
+                    <li><a href="Greetings/index.html">-制作者紹介-</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© Japan Electronics College. All Rights Reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>
